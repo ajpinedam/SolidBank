@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             Title="Mis Cuentas"
+             mc:Ignorable="d"
+             x:Class="SolidBank.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="AccountTemplate">
+                <pancake:PancakeView HeightRequest="140" BackgroundColor="White" CornerRadius="50,0,0,50" BorderColor="Blue" >
+                    <Grid Padding="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Text="{Binding Name}" FontSize="18" FontAttributes="Bold" />
+                        <Label Grid.Row="1" Text="{Binding Number}" FontSize="14" TextColor="DarkGray" />
+                        <Image Grid.Row="2" Source="{Binding CreditCardBrand}" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" />
+                        <Label Grid.Row="2" Text="{Binding AmountFormatted}" FontSize="18" HorizontalOptions="End" FontAttributes="Bold" />
+                    </Grid>
+                </pancake:PancakeView>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Orientation="Vertical">
+
+        <Grid BackgroundColor="#F177C4" HeightRequest="150" Padding="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150" />
+            </Grid.RowDefinitions>
+            <Label VerticalOptions="End" Text="{Binding CurrentUser, StringFormat='Bienvenido {0}!'}" Margin="0,0,0,30" FontSize="26" TextColor="Black" />
+        </Grid>
+
+        <Frame CornerRadius="25" HasShadow="False" Margin="0,-30,0,0" BackgroundColor="#bc91d7" HorizontalOptions="FillAndExpand" >
+            <CollectionView ItemTemplate="{StaticResource AccountTemplate}"
+                            ItemsSource="{Binding Accounts}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.Header>
+                    <Frame Padding="10,12" BackgroundColor="Transparent" HasShadow="False">
+                        <Label Text="Mis Cuentas"
+                                TextColor="#7C40A9"
+                               FontAttributes="Bold"
+                                FontSize="22"
+                                VerticalOptions="Center" />
+                    </Frame>
+                </CollectionView.Header>
+            </CollectionView>  
+        </Frame>
+    </StackLayout>
+
+</ContentPage>

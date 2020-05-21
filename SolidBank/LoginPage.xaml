@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="#7C40A9"
+             x:Class="SolidBank.LoginPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="35,10" HorizontalOptions="FillAndExpand">
+                <Image Margin="0,60,0,30" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100" Source="bank" />
+                <Entry HorizontalOptions="FillAndExpand" Text="{Binding Email, Mode=TwoWay}" Placeholder="Correo Electronico" PlaceholderColor="#730C99" TextColor="#730C99" />
+                <Entry HorizontalOptions="FillAndExpand" Text="{Binding Password, Mode=TwoWay}" IsPassword="True" Placeholder="Contraseña" PlaceholderColor="#730C99" TextColor="#730C99" />
+                <Button Text="Aceptar" TextColor="WhiteSmoke" Command="{Binding SignInCommand}" />
+                <Button Text="Olvide mi Contraseña" TextColor="WhiteSmoke" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
